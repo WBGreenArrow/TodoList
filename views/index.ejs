@@ -1,0 +1,38 @@
+<%- include('partials/header.ejs') %>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1>Lista de Todo</h1>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="/todolist" class="form-group">
+                    <input name="tarefa"type="text" class="form-control">
+                    <br>
+                    <button type="submit" class="btn btn-primary">Salvar tarefa</button>
+                </form>
+                    <div class="card">
+                        <div class="card-header">
+                            <h1>Todos</h1>
+                        </div>
+                        <div class="card-body">
+                            <% tarefa.map((item) =>{%>
+                                <p> <%= item.tarefa %> </p>
+                                <form method="POST" action="/tododeleted">
+                                    <input name="delete" type="hidden" value= "<%= item.id %>" >
+                                    <button type="submit" class="btn btn-primary">Deletar</button>
+                                </form>
+                                   
+                                </form>
+                                
+                            <%})%>
+                        </div>
+            </div>
+        </div>
+        
+    </div>
+   
+</body>
+
+<%- include('partials/footer.ejs') %>
